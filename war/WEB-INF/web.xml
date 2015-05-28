@@ -4,6 +4,8 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	
+	
 	<servlet>
 		<servlet-name>Pancake</servlet-name>
 		<servlet-class>jp.ac.tsuda.PancakeServlet</servlet-class>
@@ -12,26 +14,30 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Pancake</servlet-name>
 		<url-pattern>/pancake</url-pattern>
 	</servlet-mapping>
+	
+	
+<filter>
+    <filter-name>logincheck</filter-name>
+    <filter-class>jp.ac.tsuda.LoginCheckFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>logincheck</filter-name>
+    <url-pattern>/private.jsp</url-pattern>
+</filter-mapping>    
+     
+<servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>jp.ac.tsuda.LogoutServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+</servlet-mapping>	
+
 	<welcome-file-list>
 		<welcome-file>public.html</welcome-file>
 	</welcome-file-list>
 	
-	 
-	<filter>
-    <filter-name>logincheck</filter-name>
-    <filter-class>jp.ac.tsuda.LoginCheckFilter</filter-class>
-	</filter>
-	<filter-mapping>
-    <filter-name>logincheck</filter-name>
-    <url-pattern>/private.jsp</url-pattern>
-	</filter-mapping>    
-     
-	<servlet>
-    <servlet-name>logout</servlet-name>
-    <servlet-class>jp.ac.tsuda.LogoutServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-    <servlet-name>logout</servlet-name>
-    <url-pattern>/logout</url-pattern>
-	</servlet-mapping>
+	
 </web-app>
+
